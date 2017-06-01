@@ -18,16 +18,16 @@ $('#new-pet').on( 'click', addNewPet );
 $('#pets').on( 'click', '.edit', editPet );
 $('#pets').on( 'click', '.delete', confirmAndDeletePet );
   
-  $('#create-submit').on( 'click', handleCreateForm );
-
-$('#read-list').on( 'click', handleReadList );
-
-$('#read-submit').on( 'click', handleReadForm );
-
-$('#update-submit').on( 'click', handleUpdateForm );
-
-$('#delete-submit').on( 'click', handleDeleteForm );
-
+//  $('#create-submit').on( 'click', handleCreateForm );
+//
+//$('#read-list').on( 'click', handleReadList );
+//
+//$('#read-submit').on( 'click', handleReadForm );
+//
+//$('#update-submit').on( 'click', handleUpdateForm );
+//
+//$('#delete-submit').on( 'click', handleDeleteForm );
+//
 
 
   
@@ -37,13 +37,13 @@ displayPet();
 
 //=============================================================================
 
-function getPet() $.ajax(BASE_URL + collection,
-    {
-        method: 'GET',
-        success: getResponseHandler,
-        error: reportAjaxError
-    };
-  
+//function getPet() $.ajax(BASE_URL + collection,
+//    {
+//        method: 'GET',
+//        success: getResponseHandler,
+//        error: reportAjaxError
+//    };
+//  
   {
   try {
       var petsString = localStorage[ ITEMS_KEY];
@@ -104,14 +104,14 @@ function displayPet( ) {
 
 function addNewPet( ) {
     addOrEditPet( );
-  {
-    $.ajax( BASE_URL + collection,
-    {
-        method: 'POST',
-        data: pets,
-        success: postResponseHandler,
-        error: reportAjaxError
-    } );
+//  {
+//    $.ajax( BASE_URL + collection,
+//    {
+//        method: 'POST',
+//        data: pets,
+//        success: postResponseHandler,
+//        error: reportAjaxError
+//    } );
 }
 //=============================================================================
 
@@ -135,13 +135,13 @@ function confirmAndDeletePet( evt ) {
     }
 
     //-------------------------------------------------------------------------
-    function deletePet( idx ) {
-    $.ajax( BASE_URL + collection + '/' + pets._id,
-    {
-        method: 'DELETE',
-        success: null,
-        error: reportAjaxError
-    }; 
+//    function deletePet( idx ) {
+//    $.ajax( BASE_URL + collection + '/' + pets._id,
+//    {
+//        method: 'DELETE',
+//        success: null,
+//        error: reportAjaxError
+//    }; 
   
   {
         pets.splice( idx, 1 );
@@ -199,50 +199,49 @@ function addOrEditPet( pet ) {
         }
         localStorage[ ITEMS_KEY] = JSON.stringify( pets );
         displayPet( );
-      $.ajax( BASE_URL + collection + '/' + pets._id,
-    {
-        method: 'PUT',
-        data: personData,
-        success: null,
-        error: reportAjaxError
-    } );
-    }
-}
+//      $.ajax( BASE_URL + collection + '/' + pets._id,
+//    {
+//        method: 'PUT',
+//        data: personData,
+//        success: null,
+//        error: reportAjaxError
+    } }});
+
 
    // copied from REST test
   
   
   
-  //=============================================================================
-function reportResponse( response ) {
-    $('#response').text( JSON.stringify( response, null, 4 ) );
-}
-
-//-----------------------------------------------------------------------------
-
-  function reportAjaxError( jqXHR, textStatus, errorThrown ) {
-    var msg = 'AJAX error.\n' +
-        'Status Code: ' + jqXHR.status + '\n' +
-        'Status: ' + textStatus;
-    if ( errorThrown ) {
-        msg += '\n' + 'Error thrown: ' + errorThrown;
-    }
-    if ( jqXHR.responseText ) {
-        msg += '\n' + 'Response text: ' + jqXHR.responseText;
-    }
-    console.log(msg);
-  }
-
-
-  function getResponseHandler(response) {
-    pets = response;
-    updateTable();
-  }
-
-  function postResponseHandler(response) {
-    
-    // add _id to last pet which will be the one just created.
-    pets[pets.length - 1]._id = response.created;
-  }
-}
-})();
+//  //=============================================================================
+//function reportResponse( response ) {
+//    $('#response').text( JSON.stringify( response, null, 4 ) );
+//}
+//
+////-----------------------------------------------------------------------------
+//
+//  function reportAjaxError( jqXHR, textStatus, errorThrown ) {
+//    var msg = 'AJAX error.\n' +
+//        'Status Code: ' + jqXHR.status + '\n' +
+//        'Status: ' + textStatus;
+//    if ( errorThrown ) {
+//        msg += '\n' + 'Error thrown: ' + errorThrown;
+//    }
+//    if ( jqXHR.responseText ) {
+//        msg += '\n' + 'Response text: ' + jqXHR.responseText;
+//    }
+//    console.log(msg);
+//  }
+//
+//
+//  function getResponseHandler(response) {
+//    pets = response;
+//    updateTable();
+//  }
+//
+//  function postResponseHandler(response) {
+//    
+//    // add _id to last pet which will be the one just created.
+//    pets[pets.length - 1]._id = response.created;
+//  }
+//}
+//})();
